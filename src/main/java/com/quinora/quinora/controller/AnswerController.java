@@ -23,5 +23,12 @@ public class AnswerController {
     @GetMapping("/{id}")
     public AnswerResponseDTO getAnswerById(@PathVariable("id")Long id){
     return answerService.getAnswerById(id);
-        }
+    }
+
+    @PutMapping("/{id}")
+    public AnswerResponseDTO updateAnswer(@PathVariable("id") Long id,@RequestBody AnswerRequestDTO answerRequestDTO){
+        return answerService.updateAnswerById(id,answerRequestDTO);
+    }
+
+
 }

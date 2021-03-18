@@ -2,7 +2,10 @@ package com.quinora.quinora.service.impl;
 
 import com.quinora.quinora.dto.AnswerRequestDTO;
 import com.quinora.quinora.dto.AnswerResponseDTO;
+import com.quinora.quinora.dto.QuestionRequestDTO;
+import com.quinora.quinora.dto.QuestionResponseDTO;
 import com.quinora.quinora.entity.Answer;
+import com.quinora.quinora.entity.Question;
 import com.quinora.quinora.repository.AnswerRepository;
 import com.quinora.quinora.service.AnswerService;
 import org.springframework.beans.BeanUtils;
@@ -21,7 +24,9 @@ public class AnswerServiceImpl implements AnswerService {
 
         Answer answer = new Answer();
         BeanUtils.copyProperties(answerRequestDTO, answer);
+
         Answer savedAnswer = answerRepository.save(answer);
+
         AnswerResponseDTO responseDto = new AnswerResponseDTO();
         BeanUtils.copyProperties(savedAnswer, responseDto);
         return responseDto;
@@ -34,6 +39,25 @@ public class AnswerServiceImpl implements AnswerService {
             //copy from answer to response dto
             AnswerResponseDTO responseDTO = new AnswerResponseDTO();
             BeanUtils.copyProperties(answerOptional.get(), responseDTO);
+            return responseDTO;
+        }
+        return null;
+    }
+
+    @Override
+    public AnswerResponseDTO updateAnswerById(Long id, AnswerRequestDTO answerRequestDTO) {
+        Optional<Answer> answerOptional = answerRepository.findById(id);
+        if (answerOptional.isPresent()) {
+
+            Answer answerFromDb = answerOptional.get();
+
+            answerFromDb.setAnswerId(answerRequestDTO.getAnswerId());
+            answerFromDb.setAnswerText(answerRequestDTO.getAnswerText());
+
+            Answer savedAnswer = answerRepository.save(answerFromDb);
+
+            AnswerResponseDTO responseDTO = new AnswerResponseDTO();
+            BeanUtils.copyProperties(savedAnswer, responseDTO);
             return responseDTO;
         }
         return null;

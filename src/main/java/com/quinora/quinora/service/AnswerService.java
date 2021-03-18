@@ -7,4 +7,6 @@ public interface AnswerService {
     AnswerResponseDTO createAnswer(AnswerRequestDTO answerRequestDTO);
 
     AnswerResponseDTO getAnswerById(Long id);
+
+    AnswerResponseDTO updateAnswerById(Long id, AnswerRequestDTO answerRequestDTO);
 }
