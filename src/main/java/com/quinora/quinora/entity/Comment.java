@@ -1,6 +1,5 @@
 package com.quinora.quinora.entity;
 
-import com.quinora.quinora.dto.QuestionResponseDTO;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
@@ -10,14 +9,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-
 @Entity
 @Getter
 @Setter
-public class Question {
+public class Comment {
+
     @Id
-    @GenericGenerator(name = "question_id_seq", strategy = "increment")
-    @GeneratedValue(generator = "question_id_seq", strategy = GenerationType.AUTO)
-    private Long questionId;
-    private String questionText;
+    @GenericGenerator(name = "comment_id",strategy = "increment")
+    @GeneratedValue(generator = "comment_id",strategy = GenerationType.AUTO)
+    private Long commentId;
+    private String commentText;
+
 }

@@ -18,6 +18,7 @@ public class QuestionServiceImpl implements QuestionService {
     private QuestionRepository questionRepository;
 
     public QuestionResponseDTO createQuestion(QuestionRequestDTO questionRequestDTO) {
+
         Question question = new Question();
 
         //copy fields from dto to question
@@ -49,7 +50,7 @@ public class QuestionServiceImpl implements QuestionService {
     public QuestionResponseDTO updateQuestionById(Long id, QuestionRequestDTO questionRequestDTO) {
         Optional<Question> questionOptional = questionRepository.findById(id);
         if (questionOptional.isPresent()) {
-            //copy from employee to response dto
+            //copy from question to response dto
             Question questionFromDb = questionOptional.get();
 
             questionFromDb.setQuestionId(questionRequestDTO.getQuestionId());

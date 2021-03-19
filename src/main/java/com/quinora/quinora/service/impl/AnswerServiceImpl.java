@@ -2,10 +2,7 @@ package com.quinora.quinora.service.impl;
 
 import com.quinora.quinora.dto.AnswerRequestDTO;
 import com.quinora.quinora.dto.AnswerResponseDTO;
-import com.quinora.quinora.dto.QuestionRequestDTO;
-import com.quinora.quinora.dto.QuestionResponseDTO;
 import com.quinora.quinora.entity.Answer;
-import com.quinora.quinora.entity.Question;
 import com.quinora.quinora.repository.AnswerRepository;
 import com.quinora.quinora.service.AnswerService;
 import org.springframework.beans.BeanUtils;
